@@ -24,7 +24,7 @@ public class ZooKeeper_Constructor_Usage_Simple implements Watcher {
     public static void main(String[] args) throws Exception {
 
         ZooKeeper zookeeper = new ZooKeeper(
-                "domain1.book.zookeeper:2181",
+                "localhost:2181",
                 5000, //
                 new ZooKeeper_Constructor_Usage_Simple());
         System.out.println(zookeeper.getState());
