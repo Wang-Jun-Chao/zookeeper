@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * <pre>
- *
+ * Java API -> 创建连接 -> 创建一个最基本的ZooKeeper对象实例
  * </pre>
  * Author: 王俊超
  * Date: 2018-02-12 23:18
@@ -16,7 +16,6 @@ import java.util.concurrent.CountDownLatch;
  * Github: https://github.com/wang-jun-chao
  * All Rights Reserved !!!
  */
-//Chapter: 5.3.1 Java API -> 创建连接 -> 创建一个最基本的ZooKeeper对象实例
 public class ZooKeeper_Constructor_Usage_Simple implements Watcher {
 
     private static CountDownLatch connectedSemaphore = new CountDownLatch(1);
