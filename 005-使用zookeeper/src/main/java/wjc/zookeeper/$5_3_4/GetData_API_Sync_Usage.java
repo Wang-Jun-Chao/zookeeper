@@ -46,9 +46,7 @@ public class GetData_API_Sync_Usage implements Watcher {
             } else if (event.getType() == Event.EventType.NodeDataChanged) {
                 try {
                     System.out.println("-->" + new String(zk.getData(event.getPath(), true, stat)));
-                    System.out.println("-->" + stat.getCzxid() + "," +
-                            stat.getMzxid() + "," +
-                            stat.getVersion());
+                    System.out.println("-->" + stat.getCzxid() + "," + stat.getMzxid() + "," + stat.getVersion());
                 } catch (Exception e) {
                 }
             }

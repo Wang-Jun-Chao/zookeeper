@@ -7,7 +7,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * <pre>
- *
+ * ZooKeeper API 获取节点数据内容，使用异步(async)接口。
  * </pre>
  * Author: 王俊超
  * Date: 2018-02-21 18:51
@@ -34,8 +34,10 @@ public class GetData_API_ASync_Usage implements Watcher {
 
         zk.setData(path, "123".getBytes(), -1);
 
-        Thread.sleep(Integer.MAX_VALUE);
+//        Thread.sleep(Integer.MAX_VALUE);
+        zk.close();
     }
+
 
     public void process(WatchedEvent event) {
         if (Event.KeeperState.SyncConnected == event.getState()) {
