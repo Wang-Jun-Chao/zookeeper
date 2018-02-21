@@ -41,7 +41,8 @@ public class ZooKeeper_Constructor_Usage_With_SID_PASSWD implements Watcher {
                 new ZooKeeper_Constructor_Usage_With_SID_PASSWD(),//
                 sessionId,//
                 passwd);
-        Thread.sleep( Integer.MAX_VALUE );
+        Thread.sleep( 60000 );
+        zookeeper.close();
     }
     public void process(WatchedEvent event) {
         System.out.println("Receive watched event：" + event);

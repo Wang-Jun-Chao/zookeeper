@@ -36,7 +36,8 @@ public class ZooKeeper_Create_API_ASync_Usage implements Watcher {
         zookeeper.create("/zk-test-ephemeral-", "".getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL,
                 new StringCallbackImpl(), "I am context.");
-        Thread.sleep( Integer.MAX_VALUE );
+        Thread.sleep( 60000);
+        zookeeper.close();
     }
 
     public void process(WatchedEvent event) {
