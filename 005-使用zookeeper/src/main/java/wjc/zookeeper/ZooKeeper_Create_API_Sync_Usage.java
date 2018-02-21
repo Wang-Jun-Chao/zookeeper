@@ -40,6 +40,7 @@ public class ZooKeeper_Create_API_Sync_Usage implements Watcher {
                 Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
         System.out.println("Success create znode: " + path2);
+        zookeeper.close();
     }
 
     public void process(WatchedEvent event) {

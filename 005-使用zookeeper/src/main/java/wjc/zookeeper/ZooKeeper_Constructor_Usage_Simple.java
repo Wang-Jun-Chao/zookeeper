@@ -33,6 +33,8 @@ public class ZooKeeper_Constructor_Usage_Simple implements Watcher {
             e.printStackTrace();
         }
         System.out.println("ZooKeeper session established.");
+        zookeeper.close();
+
     }
 
     public void process(WatchedEvent event) {
