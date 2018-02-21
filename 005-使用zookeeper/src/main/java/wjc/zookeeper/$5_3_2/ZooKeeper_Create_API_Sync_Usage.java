@@ -1,27 +1,20 @@
-package wjc.zookeeper.$5_3_1;
+package wjc.zookeeper.$5_3_2;
 
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.Watcher.Event.KeeperState;
-import org.apache.zookeeper.ZooDefs.Ids;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 
 import java.util.concurrent.CountDownLatch;
-
 
 /**
  * <pre>
  * ZooKeeper API创建节点，使用同步(sync)接口。
  * </pre>
  * Author: 王俊超
- * Date: 2018-02-12 23:18
+ * Date: 2018-02-21 17:21
  * Blog: http://blog.csdn.net/derrantcm
  * Github: https://github.com/wang-jun-chao
  * All Rights Reserved !!!
  */
 public class ZooKeeper_Create_API_Sync_Usage implements Watcher {
-
     private static CountDownLatch connectedSemaphore = new CountDownLatch(1);
 
     public static void main(String[] args) throws Exception {
@@ -31,20 +24,20 @@ public class ZooKeeper_Create_API_Sync_Usage implements Watcher {
         connectedSemaphore.await();
         String path1 = zookeeper.create("/zk-test-ephemeral-",
                 "".getBytes(),
-                Ids.OPEN_ACL_UNSAFE,
+                ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL);
         System.out.println("Success create znode: " + path1);
 
         String path2 = zookeeper.create("/zk-test-ephemeral-",
                 "".getBytes(),
-                Ids.OPEN_ACL_UNSAFE,
+                ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
         System.out.println("Success create znode: " + path2);
         zookeeper.close();
     }
 
     public void process(WatchedEvent event) {
-        if (KeeperState.SyncConnected == event.getState()) {
+        if (Watcher.Event.KeeperState.SyncConnected == event.getState()) {
             connectedSemaphore.countDown();
         }
     }
